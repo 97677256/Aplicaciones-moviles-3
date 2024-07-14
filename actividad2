@@ -49,4 +49,7 @@ print("\n\n\n\n\n\n\n\n")
         print("¡Ups! Opción no válida, intenta nuevamente")
 
     }
+if  opcion == "4" {
+        break
+    }
 }
