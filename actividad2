@@ -1,0 +1,52 @@
+struct Item {
+    var nombre: String
+    var cantidad: Int
+
+}
+var items: [Item] = []
+
+while true {
+    print("Bienvenido a la materia de Desarrollo aplicaciones móviles 3\n ")
+    print("   Actividad 2: INVENTARIO")
+    print("   Autor: Blanca Patricia Rosas Torres")
+    print("   Tutor: Sandra Lara\n")
+
+    print("     <<<<<  Menú  >>>>> \n\n   1. Registro de artículos \n   2. Ver lista de artículos \n   3. Consultar existencias \n   4. Salir\n\n Recuerda solo escribe el número de la opción que deseas.\n\n")
+    print("¿Qué deseas realizar?")
+
+    let opcion = readLine()!
+
+    switch opcion {
+    case "1":
+        print("\n<<  Registro de artículos  >>\n")
+        print("¿Nombre del artículo? \n")
+        let nombre = readLine()!
+        print("\n¿Cantidad del artículo? \n")
+        let cantidad = Int(readLine()!)!
+
+        // Crear una instancia de Item y agregarla al arreglo
+        let nuevoItem = Item(nombre: nombre, cantidad: cantidad)
+        items.append(nuevoItem)
+print("\n\n\n\n\n\n\n\n")
+    case "2":
+        print("<<   Ver lista de artículos   >>\n")
+        for item in items {
+            print("Nombre del artículo: \(item.nombre)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        }
+
+    case "3":
+        print("<<   Consultar existencias   >>\n")
+        print("Nombre del artículo: \(items.last?.nombre ?? "")\n\n")
+        print("Cantidad del artículo: \(items.last?.cantidad ?? 0)\n\n")
+
+        
+
+    case "4":
+        print("<<   Salir   >>\n")
+        print("Gracias por usar el programa. ¡Hasta luego! 😊\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        
+    default:
+        print("¡Ups! Opción no válida, intenta nuevamente")
+
+    }
+}
