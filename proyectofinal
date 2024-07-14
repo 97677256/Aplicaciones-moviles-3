@@ -1,0 +1,46 @@
+print("Bienvenido a la materia de Desarrollo aplicaciones móviles 3\n ")
+print("   Proyecto Final: Áreas de figuras geométricas\n ")
+print("   Autor: Blanca Patricia Rosas Torres")
+print("   Tutor: Sandra Lara\n")
+print("     ===  Menú  === \n\n   1. Área de un cuadrado  🟦 \n   2. Área de un triangulo 🔺 \n   3. Área de un rectángulo📝 \n   4. Área de un círculo   ⭕\n\n Recuerda solo escribe el número de la opción que deseas.\n\n")
+print("¿Qué área deseas encontrar 🔍?\n")
+var opción = readLine()!
+print("\n")
+while opcion != "5"{
+switch opcion{
+  case "1":
+print("\n🟦 🟦 🟦 Área de un cuadrado 🟦 🟦 🟦 \n\n Ingresa el valor de un lado del cuadrado: ")
+let lado = readLine()!
+print("\n 🥳 El área del cuadrado es : \(Int(lado)! * Int(lado)!)\n\n\n\n")
+  case "2":
+print("\n🔺 🔺 🔺Área del Triángulo 🔺 🔺 🔺 \n \n Ingresa el valor de la base del triángulo: ")
+let base = readLine()!
+print("\nIngresa el valor de la altura del triángulo: \n")
+let altura = readLine()!
+print("\n👌🏻 El area del triángulo es : \(Float(base)! * Float(altura)! / 2)\n\n\n\n")
+  case "3":
+print("\n📝 📝 📝 Área del rectángulo 📝 📝 📝 \n\n Ingresa el valor de la base del rectángulo: ")
+let base1 = readLine()!
+print("\n Ingresa el valor de la altura del rectángulo: ")
+let altura1 = readLine()!
+print("\n 👏🏻 El área del rectángulo es : \(Float(base1)! * Float(altura1)!)\n\n\n\n")
+  case "4":
+print("\n⭕ ⭕ ⭕ Área de un círculo ⭕ ⭕ ⭕ \n\n Ingresa el valor del radio del círculo: ")
+let radio = readLine()!
+let circulo = Float(radio)! * Float(radio)! * 3.1416
+print("\n🎉El área del círculo es : \(circulo)\n\n\n\n")  
+  default:
+  print("🥴 Ups!! verifica tu respuesta🔍 ")   
+}
+print("¿Deseas calcular otra área 📏? \n\n 1. Sí \n 2. No \n")
+let opcion2 = readLine()!
+if opcion2 == "1"
+{
+  print("     ===  Menú  === \n\n   1. Área de un cuadrado  🟦 \n   2. Área de un triángulo 🔺 \n   3. Área de un rectángulo📝 \n   4. Área de un circulo   ⭕\n\n Recuerda solo escribe el número de la opción que deseas.\n\n")
+  print("¿Qué área deseas encontrar 🔍?\n")
+  opcion = readLine()!
+} else 
+{
+print("\n ==😎 Gracias por usar el programa 😎==") 
+  break }
+}
