@@ -1,0 +1,6 @@
+print("Bienvenido a la materia de Desarrollo de Aplicaciones Móviles 3\n\n")
+print("Actividad 1: Clasificar números en pares e impares\n")
+print("Por favor ingresa un  número: \n")
+var num1 = Int(readLine()!)!
+num1  % 2 == 0 ? print("\nEl número es par\n") : print("\nEl número es impar\n")
+print("Gracias, hasta pronto!! 😉 ")
