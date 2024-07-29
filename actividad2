@@ -1,9 +1,11 @@
-struct Item {
+/*opcion 1 se corrige el caso 3 para que pregunte por el articulo ademas se agrega un else por si el articulo no esta en el listado*/
+/*
+struct articulo {
     var nombre: String
     var cantidad: Int
 }
 
-var items: [Item] = []
+var articulos: [articulo] = []
 
 print("Bienvenido a la materia de Desarrollo aplicaciones móviles 3\n")
 print("   Actividad 2: INVENTARIO")
@@ -23,28 +25,108 @@ while true {
         let nombre = readLine()!
         print("\n¿Cantidad del artículo? \n")
         let cantidad = Int(readLine()!)!
-
-        // Crear una instancia de Item y agregarla al arreglo
-        let nuevoItem = Item(nombre: nombre, cantidad: cantidad)
-        items.append(nuevoItem)
-        print("\n\n\n\n\n\n\n\n")
+        
+        let nuevoarticulo = articulo(nombre: nombre, cantidad: cantidad)
+        articulos.append(nuevoarticulo)
+        
+        print("\n\n\n")
     case "2":
         print("<<   Ver lista de artículos   >>\n")
-        for item in items {
-            print("Nombre del artículo: \(item.nombre)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        for articulo in articulos{
+            print("Nombre del artículo: \(articulo.nombre)\n\n\n")
         }
     case "3":
         print("<<   Consultar existencias   >>\n")
-        print("Nombre del artículo: \(items.last?.nombre ?? "")\n\n")
-        print("Cantidad del artículo: \(items.last?.cantidad ?? 0)\n\n")
+        print("¿Nombre del artículo? \n")
+        let nombre = readLine()!
+        for articulo in articulos{
+            if articulo.nombre == nombre{
+             print("Articulo: \(articulo.nombre) Cantidad: \(articulo.cantidad)\n\n")   
+            }else{
+                print("No se encontró el artículo que buscas, verifica el listadode artículos")
+            }
+            
+        }
     case "4":
         print("Saliendo del programa...")
-        print("Gracias por usar el programa. ¡Hasta luego! 😊\n\n\n\n\n\n\n\n\n\n\n\n")
+        print("Gracias por usar el programa.Hasta luego! 😊\n\n\n\n\n\n\n\n\n\n\n\n")
         default:
-        print("¡Ups! Opción no válida, intenta nuevamente")
+        print("¡Ups! Opción no válida, intenta nuevamente\n\n")
 
     } 
+    
     if  opcion == "4" {
-        break
+     break
     } 
 }
+*/
+/* opcion de solucion 2, empieza igual pidiendo la informacion guardandola, el codigo comienza con la estructura al igual que la opcion 1, luego cambia declarando funciones que seran llamadas en los casos del swhitch, a diferencia del codigo de la tutoria este no tiene un break en la funcion consultar existencias se cambia por un else con un print, para la seleccion se usa un repeat- while donde en el repeat guardamos el swhitch y en el while se pone la condicion de que si la opcion es diferente a 4 se repita el swhitch ejemplo si pone 7 manda al default, si la opcion es 4 se sale del programa*/
+struct articulo
+{
+   var nombre : String
+    var cantidad : Int
+}
+func registrarArticulo() -> articulo{
+        print("Nombre del artículo:", terminator: "")
+    let nombre = readLine()!
+    print("Cantidad del artículo:", terminator: "")
+    let cantidad = Int(readLine()!)!
+    return articulo(nombre: nombre, cantidad: cantidad)
+}
+func imprimirListado(articulos:[articulo])
+{
+    print("Listado   Articulo   Cantidad \n")
+    for (indice, articulo) in articulos.enumerated(){
+        print("Articulo \(indice + 1). \(articulo.nombre) Cantidad: \(articulo.cantidad)\n")
+        
+    }
+}
+func consultarExistencias(articulos :[articulo]){
+    print("Nombre del artículo:", terminator: "")
+    let nombre = readLine()!
+    for (indice, articulo) in articulos.enumerated(){
+        if articulo.nombre == nombre
+        {
+            print("\nArtículo: \(indice + 1)\(articulo.nombre) Cantidad: \(articulo.cantidad)\n")  
+        
+        } else {
+            print("No se encontró lo que buscas, verifica la lista de articulos")
+        }
+    }
+}
+var articulos : [articulo] = []
+var opcion = 0
+
+
+print("Bienvenido a la materia de Desarrollo aplicaciones móviles 3\n")
+print("   Actividad 2: INVENTARIO")
+print("   Autor: Blanca Patricia Rosas Torres")
+print("   Tutor: Sandra Lara\n")
+repeat{
+    print("     <<<<<  Menú  >>>>> \n\n   1. Registro de artículos \n   2. Ver lista de artículos \n   3. Consultar existencias \n   4. Salir\n\n Recuerda solo escribe el número de la opción que deseas.\n\n")
+    print("¿Qué deseas realizar?  ", terminator: "")
+opcion = (Int(readLine()!))!
+    switch opcion{
+        case 1:
+        print("\n<<  Registro de artículos  >>\n")
+        print("¿Nombre del artículo? ", terminator: "")
+        let nombre = readLine()!
+        print("\n¿Cantidad del artículo? ", terminator: "")
+        let cantidad = Int(readLine()!)!
+        let articulo = articulo (nombre: nombre, cantidad: cantidad)
+        articulos.append(articulo)
+        print("<<<<< Articulo registrado con exito >>>>>>\n\n")
+        case 2:
+        print("\n<<  Ver lista de articulos  >>\n")
+        imprimirListado(articulos : articulos)
+        case 3:
+        print("\n<<  Consultar existencias  >>\n")
+        consultarExistencias(articulos : articulos)            
+        case 4:
+        print("\nSaliendo del programa...")
+        print("Gracias por usar el programa.Hasta luego! 😊\n\n\n\n\n\n\n\n\n\n\n\n")
+        default:
+        print("¡Ups! Opción no válida, intenta nuevamente\n\n")
+    }   }
+    
+    while opcion != 4
