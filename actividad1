@@ -1,6 +1,26 @@
+//opcion 1 la primera que se realizo, simple solo pide un numero al usuario hace la operacion consulta el residuo y si es 0 es par, si no es 0 es impar y se despide
+/*
 print("Bienvenido a la materia de Desarrollo de Aplicaciones Móviles 3\n\n")
 print("Actividad 1: Clasificar números en pares e impares\n")
 print("Por favor ingresa un  número: \n")
-var num1 = Int(readLine()!)!
-num1  % 2 == 0 ? print("\nEl número es par\n") : print("\nEl número es impar\n")
-print("Gracias, hasta pronto!! 😉 ")
+let num1 = Int(readLine()!)!
+num1  % 2 == 0 ? print("\nEl número \(num1) es par\n") : print("\nEl número \(num1) es impar\n")
+ 
+print("Gracias, hasta pronto!! 😉 ")*/
+
+
+//Opcion 2, se pone en while para que se repita el proceso, con la pregunta al final que funciona como condicion para romper el ciclo, la palabra reservada terminator es para que no salte de linea, la compuerta lógica es || or para definir las posibles respuestas 
+print("Bienvenido a la materia de Desarrollo de Aplicaciones Móviles 3 \n\n Actividad 1: Clasificar números en pares e impares\n\n")
+while true {
+ print("Ingresa un número por favor: ",terminator: "")
+let num1 = Int(readLine()!)!
+num1 % 2 == 0 ? print("\nEl número \(num1) es par") : print("\nEl número \(num1) es impar\n")
+
+print("\nDeseas hacer otra consulta? (s/n)", terminator: "")
+let respuesta = readLine()!
+if respuesta == "n" || respuesta == "N"
+{
+  break
+}}
+print ("\nGracias, hasta pronto!! 😉\n")
+
