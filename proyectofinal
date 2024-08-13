@@ -1,4 +1,4 @@
-print("Bienvenido a la materia de Desarrollo aplicaciones móviles 3\n ")
+/*print("Bienvenido a la materia de Desarrollo aplicaciones móviles 3\n ")
 print("   Proyecto Final: Áreas de figuras geométricas\n ")
 print("   Autor: Blanca Patricia Rosas Torres")
 print("   Tutor: Sandra Lara\n")
@@ -6,7 +6,7 @@ print("     ===  Menú  === \n\n   1. Área de un cuadrado  🟦 \n   2. Área d
 print("¿Qué área deseas encontrar 🔍?\n")
 var opcion = readLine()!
 print("\n")
-while opcion != "5"{
+while opcion != "5" {
 switch opcion{
   case "1":
 print("\n🟦 🟦 🟦 Área de un cuadrado 🟦 🟦 🟦 \n\n Ingresa el valor de un lado del cuadrado: ")
@@ -40,4 +40,118 @@ if opcion2 == "1" {
 } else {
 print("\n ==😎 Gracias por usar el programa 😎==") 
   break }
+}*/
+
+//opcion 2 con uso de clases
+/* se crea la clase figura, donde declaramos la funcion calculararea  que regresara un valor double */
+class figura{
+  func calculararea()->Double {
+    return 0.0
+  }
 }
+/*la clase hija cuadrado hereda de la clase figura la funcion calculararea la cual se pone como sobreescritura para cambiar su resultado, donde se declara el valor de lado pidiendola y guardandola en una variable para regresar el area del cuadrado, y se hace lo mismo con las otras figuras creando clases*/
+class cuadrado:figura{
+  var lado:Double
+  init(lado:Double){/* usamos un inicializador para poder guardar el valor de lado en la variable lado y con self llamamos al metodo 
+para que asuma el valor de la variable y no se confunda entre las otras clases como ejemplo en el rectangulo u triangulo */
+    self.lado=lado
+  }
+  override func calculararea() -> Double {
+    return lado*lado
+}
+}
+
+class rectangulo:figura{
+  var base:Double
+  var altura:Double
+
+  init(base:Double, altura:Double){
+    self.base=base
+    self.altura=altura
+  }
+  override func calculararea() -> Double{
+    return base*altura
+  }  
+}
+
+class triangulo:figura
+{
+  var base:Double
+  var altura:Double
+  init(base:Double, altura:Double){
+    self.base=base
+    self.altura=altura
+  }
+  override func calculararea() -> Double{
+    return (base*altura)/2
+      }
+}
+/* aqui ademas de la clase y la variable de declara una constante que sera el valor de pi*/
+class circulo:figura{
+  var radio:Double
+  let pi:Double = 3.1416
+  
+  init(radio:Double){
+    self.radio=radio
+      }
+  override func calculararea() -> Double{
+    return pi*radio*radio
+  }
+}
+var opcion = Int(0)
+var bandera = true/*aqui se declara la variable bandera para que el ciclo while se ejecute mientras sea verdadero*/
+
+print("Bienvenido a la materia de Desarrollo aplicaciones móviles 3\n ")
+print("   Proyecto Final: Áreas de figuras geométricas\n ")
+print("   Autor: Blanca Patricia Rosas Torres")
+print("   Tutor: Sandra Lara\n")
+
+repeat{
+print("     ===  Menú  === \n\n   1. Área de un cuadrado  🟦 \n   2. Área de un triángulo 🔺 \n   3. Área de un rectángulo📝 \n   4. Área de un círculo   ⭕ \n   5. Salir\n\n Recuerda solo escribe el número de la opción que necesitas.\n\n")
+print("¿Qué necesitas realizar 🔍? ", terminator: "")
+let opcion = Int(readLine()!)!
+  
+  switch opcion {
+    /* iniciamos un switch para que el usuario pueda elegir que figura quiere calcular y dependiendo de la opcion se ejecute el llamado de clase y se imprime el resultado*/
+    case 1:
+    print("\n🟦 🟦 🟦 Area de un cuadrado🟦 🟦 🟦\n \nIngresa el valor de un lado del cuadrado: ", terminator: "")
+    let lado = Double(readLine()!)!
+    let cuadrado = cuadrado(lado: lado)
+    print("\n🟦 El área del cuadrado es: \(cuadrado.calculararea())🟦\n")
+   
+    
+    case 2:
+         print("\n🔺🔺🔺Area de un triangulo🔺🔺🔺 \n\nINGRESA LA BASE DEL TRIANGULO: ", terminator:"")
+          let base = Double(readLine()!)!
+          print("INGRESAR LA ALTURA DEL TRIANGULO: ", terminator: "")
+    let altura = Double(readLine()!)!
+    let triangulo = triangulo(base: base, altura: altura)
+    print("\n🔺El área del triangulo es: \(triangulo.calculararea())🔺\n")
+    
+    
+    case 3:
+    print("\n📝📝📝Area de un rectangulo📝📝📝\n\nIngresa el valor de la base del rectángulo: ", terminator: "")
+    let base = Double(readLine()!)!
+    print("Ingresa el valor de la altura del rectángulo: ", terminator: "")
+    let altura = Double(readLine()!)!
+    let rectangulo = rectangulo(base: base, altura: altura)
+    print("\n📝 El área del rectángulo es: \(rectangulo.calculararea()) 📝\n")
+   
+    
+    case 4:
+    print("\n⭕⭕⭕Area de un circulo⭕⭕⭕\n\nIngresa el valor del radio del círculo: ", terminator: "")
+    let radio = Double(readLine()!)!
+    let circulo = circulo(radio: radio)
+    print("\n⭕El área del círculo es: \(circulo.calculararea())⭕\n")
+   
+    
+    case 5:/*en caso de que el usuario escoja la opcion 5 se imprime un mensaje y se cambia la bandera a falso para que el programa cierre*/
+    bandera = false
+    print("\n😎¡Gracias por usar el programa!😎")
+   
+    
+    default:
+    print("Ups!! verifica tu respuesta🔍 \n\n")     }
+     
+
+} while bandera == true/*esto se repetira mientras la bandera sea verdadera, y si orpime una opcion difrenete a las declaradas entra el default*/
